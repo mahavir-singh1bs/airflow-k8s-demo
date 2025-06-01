@@ -1,0 +1,26 @@
+# values.yaml
+executor: KubernetesExecutor
+
+dags:
+  gitSync:
+    enabled: true
+    repo: https://github.com/mahavir-singh1bs/airflow-k8s-demo.git  # Change to your repo
+    branch: main
+    subPath: "airflow/example_dags"
+    syncInterval: 60
+
+config:
+  AIRFLOW__CORE__EXECUTOR: KubernetesExecutor
+
+rbac:
+  create: true
+
+serviceAccount:
+  create: true
+  name: airflow-sa
+
+kubernetesPodTemplate:
+  enabled: false
+
+workers:
+  enabled: true
